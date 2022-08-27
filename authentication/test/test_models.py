@@ -15,3 +15,11 @@ class TestModel(APITestCase):
         self.assertFalse(user.is_staff)
         self.assertEqual(user.email, 'crycetruly@gmail.com')
 
+    def test_raises_error_when_no_username_is_supplied(self):
+        self.assertRaises(ValueError,User.objects.create_user,email = 'crycetruly@gmail.com',password = 'password123!@')
+
+        # user = User.objects.create_user(username = 'cryce',)
+        # self.assertIsInstance(user, User)
+        # self.assertFalse(user.is_staff)
+        # self.assertEqual(user.email, 'crycetruly@gmail.com')
+
