@@ -23,5 +23,4 @@ class LoginSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('email', 'username', 'password', 'token')
-
         read_only_fields = ['token']
