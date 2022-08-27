@@ -25,6 +25,14 @@ class TestModel(APITestCase):
         # with.self.assertRaisesMessage(ValueError,)
         self.assertRaises(ValueError,User.objects.create_user,username="notset",email = "",password = 'password123!@')
 
+    def test_raises_error_when_no_email_is_supplied(self):
+        self.assertRaises(ValueError,User.objects.create_user,username="fldskjflk",email = '',password = 'password123!@')
+
+    def test_raises_error_with_message_when_no_email_is_supplied(self):
+        with self.assertRaisesMessage(ValueError,'The given email must be set'):
+            User.objects.create_user(username='crycetruly@gmail.com',email='', password = 'password@1')
+        # with.self.assertRaisesMessage(ValueError,)
+        self.assertRaises(ValueError,User.objects.create_user,username="notset",email = "",password = 'password123!@')
 
     
 
