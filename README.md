@@ -86,7 +86,7 @@
      ```
      - Update Settings.py
        - AUTH_USER_MODEL = "authentication.User"
-       git commit id - 2b705ac0dd7bc06782563d8e4d85c2fd327e6092
+       git commit id - https://github.com/niklaus18/TOdolist/commit/2b705ac0dd7bc06782563d8e4d85c2fd327e6092
   
   
 ## User Registration
