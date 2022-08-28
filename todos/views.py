@@ -6,6 +6,9 @@ from rest_framework.generics import CreateAPIView, ListAPIView,  ListCreateAPIVi
 from rest_framework.permissions import IsAuthenticated
 from django_filters.rest_framework import DjangoFilterBackend
 from todos.pagination import CustomPageNumberPagination
+from rest_framework.response import Response
+from rest_framework import status, generics
+
 
 
 class TodosAPIView(ListCreateAPIView):
@@ -31,5 +34,15 @@ class TodoDetailAPIView(RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated,)
     lookup_field = "id"
 
-    def get_queryset(self):
-        return Todo.objects.filter(owner=self.request.user)
+    # def get_queryset(self):
+    #     return Todo.objects.filter(owner=self.request.user)
+
+    # def get(self, request):
+    #     data = Todo.objects.filter(owner=self.request.user)
+    #     return data
+
+    def get(self, request):
+        data = Todo.objects.filter(owner=self.request.user)
+        serializer = TodoSerializer(data,many=True).data
+        return Response(serializer, status=status.HTTP_200_OK)
+
